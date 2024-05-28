@@ -486,22 +486,16 @@ const createModel = async () => {
  * https://ai.google.dev/gemini-api/docs/prompting_with_media#supported_file_formats
  */
 
-async function run() {
-  chatSession = model.startChat({
-    generationConfig,
-    safetySettings,
-  });
-
-  const result = await chatSession.sendMessage("INSERT_INPUT_HERE");
-  console.log(result.response.text());
-}
-
 export const sendMessage = async (input: string) => {
   const result = await chatSession.sendMessage(input);
   return result;
 };
 
-export const getHistory = () => chatSession.getHistory();
+export const getHistory = async () => {
+  const history = await chatSession.getHistory();
+  console.log("History length", history.length);
+  return history;
+};
 
 // run();
 createModel();

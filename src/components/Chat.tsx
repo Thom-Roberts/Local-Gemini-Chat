@@ -1,4 +1,4 @@
-import { createSignal } from "solid-js";
+import { createEffect, createSignal } from "solid-js";
 
 interface Props {
   submitChat: (text: string) => void;
@@ -7,6 +7,13 @@ interface Props {
 
 export const Chat = (props: Props) => {
   const [chatBoxText, setChatBoxText] = createSignal("");
+
+  createEffect(() => {
+    if (!props.disabled) {
+      console.log("Chat box is enabled");
+      setChatBoxText("");
+    }
+  });
 
   return (
     <form
