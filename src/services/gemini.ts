@@ -22,7 +22,7 @@ import {
   ChatSession,
 } from "@google/generative-ai";
 
-const apiKey = "AIzaSyA6kphfmXNYMhtJu39Sv4a4LRQE9AOqSlo"; // TODO: Make this an env variable
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey);
 
 const model = genAI.getGenerativeModel({
