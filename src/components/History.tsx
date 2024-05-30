@@ -10,15 +10,9 @@ export const History = (props: Props) => {
   const [data, { refetch }] = createResource(getHistory);
 
   createEffect(() => {
-    console.log("Running effect");
     if (!props.disabled) {
       refetch();
-      console.log("Disabled, so refreshing history");
     }
-  });
-
-  createEffect(() => {
-    console.log("data length from component", data()?.length);
   });
 
   const createEl = (text: string) => {

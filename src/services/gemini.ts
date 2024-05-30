@@ -58,7 +58,7 @@ const safetySettings: SafetySetting[] = [
 
 let chatSession: ChatSession;
 
-const createModel = async () => {
+const createModel = () => {
   chatSession = model.startChat({
     generationConfig,
     safetySettings,
@@ -81,10 +81,7 @@ export const sendMessage = async (input: string) => {
 };
 
 export const getHistory = async () => {
-  const history = await chatSession.getHistory();
-  console.log("History length", history.length);
-  return history;
+  return chatSession.getHistory();
 };
 
-// run();
 createModel();
